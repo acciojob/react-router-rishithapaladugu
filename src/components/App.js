@@ -1,19 +1,26 @@
+
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import Navigation from "./Navigation";
-import './../styles/App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "../styles/App.css";
+
+const Home = () => <h1>Welcome to my website!</h1>;
+const About = () => <h1>This is a sample React Router program.</h1>;
 
 const App = () => {
   return (
     <div>
+      {/* Do not remove the main div */}
       <Router>
-        <Navigation />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-        </Switch>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </Router>
     </div>
   );
